@@ -1,0 +1,12 @@
+body{
+	background-color: #222;
+}
+
+tr{
+	background-color: #bbb;
+}
+
+th{
+	font-size: 1.5rem;
+	width: 15rem;
+}
