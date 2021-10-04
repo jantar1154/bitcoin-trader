@@ -1,12 +1,40 @@
-body{
-	background-color: #222;
+* {
+	box-sizing: border-box;
 }
 
-tr{
+body{
+	height: 100%;
+}
+
+.bg{
+	filter: blur(5px);
+	-webkit-filter: blur(5px);
+	height: 100%;
+	background-color: #222;
+	background-image: url("https://i.kym-cdn.com/entries/icons/facebook/000/029/959/Screen_Shot_2019-06-05_at_1.26.32_PM.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.currencyTable{
+	padding: 5px;
+	position: absolute;
+	background: rgba(150, 150, 150, 0.3);
+	z-index: 2;
+	top: 10%;
+	right: -22rem;
+	transform: translate(-50%, -50%);
+	width: 50rem;
+	font-size: 1.5rem;
+}
+
+tr{	
 	background-color: #bbb;
 }
 
 th{
-	font-size: 1.5rem;
+	
 	width: 15rem;
 }
