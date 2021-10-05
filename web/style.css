@@ -1,31 +1,40 @@
+* {
+	box-sizing: border-box;
+}
+
 body{
+	height: 100%;
+}
+
+.bg{
+	filter: blur(5px);
+	-webkit-filter: blur(5px);
+	height: 100%;
 	background-color: #222;
-	background-image: url("https://i.kym-cdn.com/photos/images/newsfeed/001/499/826/2f0.png");
+	background-image: url("https://i.kym-cdn.com/entries/icons/facebook/000/029/959/Screen_Shot_2019-06-05_at_1.26.32_PM.jpg");
 	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: scroll;
 	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
 }
 
-table{
-	margin-bottom: 3rem;
-	background-color: #444;
-	box-shadow: 0 0 40px;
+.currencyTable{
+	padding: 5px;
+	position: absolute;
+	background: rgba(150, 150, 150, 0.3);
+	z-index: 2;
+	top: 10%;
+	right: -22rem;
+	transform: translate(-50%, -50%);
+	width: 50rem;
+	font-size: 1.5rem;
 }
 
-tr{
+tr{	
 	background-color: #bbb;
 }
 
 th{
-	font-size: 1.5rem;
+	
 	width: 15rem;
-}
-
-select{
-	font-size: 1.2rem;
-}
-
-button{
-	font-size: 1.2rem;
 }
