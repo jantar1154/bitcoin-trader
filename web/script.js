@@ -22,11 +22,29 @@ function loop(){
 function buyBTC(){
 	let select = document.getElementById("buyBTCselect").value
 	if(money >= select){
-		money -= select
+		subMoney(select)
 		bitcoinOwned += (select/bitcoinPrice)
-		document.getElementById("btcOwned").innerHTML = Math.round(bitcoinOwned*10000)/10000 + " BTC"
-		document.getElementById("money").innerHTML = money + " Kč"
+		document.getElementById("btcOwned").innerHTML = Math.round(bitcoinOwned * 10000)/10000 + " BTC"
 	}
+}
+
+function sellBTC(){
+	let select = document.getElementById("sellBTCselect").value
+	if ((bitcoinPrice * bitcoinOwned >= select)){
+		addMoney(select)
+	}else{
+		console.log("nemožno prodat")
+	}
+}
+
+function addMoney(add){
+	money += (add*1)
+	document.getElementById("money").innerHTML = money + "Kč"
+}
+
+function subMoney(sub){
+	money -= sub
+	document.getElementById("money").innerHTML = money + "Kč"
 }
 
 function change(mul){
