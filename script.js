@@ -33,6 +33,7 @@ function sellBTC(){
 	if ((bitcoinPrice * bitcoinOwned >= select)){
 		addMoney(select)
 		bitcoinOwned -= (select / bitcoinPrice)
+		document.getElementById("btcOwned").innerHTML = Math.round(bitcoinOwned * 10000)/10000 + " BTC"
 	}else{
 		console.log("nemožno prodat")
 	}
