@@ -15,7 +15,7 @@ function loop(){
 	
 	bitcoinChange = bitcoinPriceLast - bitcoinPrice
 	bitcoinPriceLast = bitcoinPrice
-	bitcoinPrice += change(2000)
+	bitcoinPrice += change(3000)
 }
 
 
@@ -32,6 +32,7 @@ function sellBTC(){
 	let select = document.getElementById("sellBTCselect").value
 	if ((bitcoinPrice * bitcoinOwned >= select)){
 		addMoney(select)
+		bitcoinOwned -= (select/bitcoinPrice)
 	}else{
 		console.log("nemožno prodat")
 	}
