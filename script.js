@@ -11,7 +11,7 @@ setInterval(loop, 5000);
 
 function loop(){
 	document.getElementById("btcPrice").innerHTML = Math.round(bitcoinPrice) + ",- Kč"
-	document.getElementById("btcChange").innerHTML = (bitcoinChange > 0 ? "+" : "") + Math.round(bitcoinChange) + " Kč"
+	document.getElementById("btcChange").innerHTML = (bitcoinChange > 0 ? "+" : "") + bitcoinChange + " Kč"
 	
 	bitcoinChange = bitcoinPriceLast - bitcoinPrice
 	bitcoinPriceLast = bitcoinPrice
@@ -23,7 +23,7 @@ function buyBTC(){
 	let select = document.getElementById("buyBTCselect").value
 	if(money >= select){
 		subMoney(select)
-		bitcoinOwned += (select/bitcoinPrice)
+		bitcoinOwned += (select / bitcoinPrice)
 		document.getElementById("btcOwned").innerHTML = Math.round(bitcoinOwned * 10000)/10000 + " BTC"
 	}
 }
@@ -32,14 +32,14 @@ function sellBTC(){
 	let select = document.getElementById("sellBTCselect").value
 	if ((bitcoinPrice * bitcoinOwned >= select)){
 		addMoney(select)
-		bitcoinOwned -= (select/bitcoinPrice)
+		bitcoinOwned -= (select / bitcoinPrice)
 	}else{
 		console.log("nemožno prodat")
 	}
 }
 
 function addMoney(add){
-	money += (add*1)
+	money += (add * 1)
 	document.getElementById("money").innerHTML = money + "Kč"
 }
 
@@ -51,6 +51,6 @@ function subMoney(sub){
 function change(mul){
 	let r = Math.round(Math.random() * mul)
 	r *= 1 - Math.random() * 2
-	return Math.round(r*10)/10
+	return Math.round(r * 10) / 10
 	Document.getElementById("btcPrice").innerHTML = bitcoinPrice + " Kč"
 }
