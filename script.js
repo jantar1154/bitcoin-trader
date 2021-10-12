@@ -11,7 +11,7 @@ setInterval(loop, 5000);
 
 function loop(){
 	document.getElementById("btcPrice").innerHTML = Math.round(bitcoinPrice) + ",- Kč"
-	document.getElementById("btcChange").innerHTML = (bitcoinChange > 0 ? "+" : "") + bitcoinChange + " Kč"
+	document.getElementById("btcChange").innerHTML = (bitcoinChange > 0 ? "+" : "") + Math.round(bitcoinChange / 10) * 10 + " Kč"
 	
 	bitcoinChange = bitcoinPriceLast - bitcoinPrice
 	bitcoinPriceLast = bitcoinPrice
