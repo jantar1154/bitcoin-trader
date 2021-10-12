@@ -8,6 +8,8 @@ var bitcoinOwned = 0;
 
 setInterval(loop, 5000);
 
+loop();
+
 
 function loop(){
 	document.getElementById("btcPrice").innerHTML = Math.round(bitcoinPrice) + ",- Kč"
