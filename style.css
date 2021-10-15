@@ -41,13 +41,14 @@ th{
 .currencyTable{
 	position: absolute;
 	z-index: 2;
-	top: 10%;
+	top: 15%;
 	right: 50px;
-	width: 1200px;
+	width: 65%;
 }
 
 .statsTable{
 	position: absolute;
+	width: 25%;
 	top: 5%;
 	left: 5%;
 }
