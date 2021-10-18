@@ -16,7 +16,7 @@ var bitcoinOwned = 0;
 var dogeOwned = 0;
 var ethOwned = 0;
 
-setInterval(loop, 1000);
+setInterval(loop, 2000)
 
 function loop(){
 	
@@ -28,19 +28,20 @@ function loop(){
 	dogePriceLast = dogePrice
 	ethPriceLast = ethPrice
 	
-	bitcoinPrice += change(3000)
-	dogePrice += change(10)
-	ethPrice += change(1000)
+	bitcoinPrice += change(4000)
+	dogePrice += change(20)
+	ethPrice += change(1500)
 	
 	dogePrice = Math.max(1.5, dogePrice);
 	
 	document.getElementById("btcPrice").innerHTML = Math.round(bitcoinPrice) + ",- Kč"
 	document.getElementById("dogePrice").innerHTML = Math.round(dogePrice * 10) / 10 + ",- Kč"
 	document.getElementById("ethPrice").innerHTML = Math.round(ethPrice * 10) / 10 + ",- Kč"
-	
+
 	document.getElementById("btcChange").innerHTML = (bitcoinChange > 0 ? "+" : "") + Math.round(bitcoinChange * 10) / 10 + " Kč"
-	document.getElementById("dogeChange").innerHTML = (dogeChange > 0 ? "+" : "") + Math.round(dogeChange * 100) / 10 + " Kč"
+	document.getElementById("dogeChange").innerHTML = (dogeChange > 0 ? "+" : "") + Math.round(dogeChange * 10) / 10 + " Kč"
 	document.getElementById("ethChange").innerHTML = (ethChange > 0 ? "+" : "") + Math.round(ethChange * 10) / 10 + " Kč"
+
 }
 
 
@@ -53,9 +54,30 @@ function buyBTC(){
 	}
 }
 
+
+function buyDOGE(){
+	let select = document.getElementById("buyDOGEselect").value
+	if(money >= select){
+		subMoney(select)
+		dogeOwned += (select / dogePrice)
+		document.getElementById("dogeOwned").innerHTML = Math.round(dogeOwned * 10000)/10000 + " Đ"
+	}
+}
+
+
+function buyETH(){
+	let select = document.getElementById("buyETHselect").value
+	if(money >= select){
+		subMoney(select)
+		ethOwned += (select / ethPrice)
+		document.getElementById("ethOwned").innerHTML = Math.round(ethOwned * 10000)/10000 + " ETH"
+	}
+}
+
+
 function sellBTC(){
 	let select = document.getElementById("sellBTCselect").value
-	if ((bitcoinPrice * bitcoinOwned >= select)){
+	if (bitcoinPrice * dogeOwned >= select){
 		addMoney(select)
 		bitcoinOwned -= (select / bitcoinPrice)
 		document.getElementById("btcOwned").innerHTML = Math.round(bitcoinOwned * 10000)/10000 + " BTC"
@@ -64,15 +86,42 @@ function sellBTC(){
 	}
 }
 
+
+function sellDOGE(){
+	let select = document.getElementById("sellDOGEselect").value
+	if (dogePrice * dogeOwned >= select){
+		addMoney(select)
+		dogeOwned -= (select / dogePrice)
+		document.getElementById("dogeOwned").innerHTML = Math.round(dogeOwned * 10000)/10000 + " Đ"
+	}else{
+		console.log("nemožno prodat")
+	}
+}
+
+
+function sellETH(){
+	let select = document.getElementById("sellETHselect").value
+	if (ethPrice * ethOwned >= select){
+		addMoney(select)
+		ethOwned -= (select / ethPrice)
+		document.getElementById("ethOwned").innerHTML = Math.round(ethOwned * 10000)/10000 + " ETH"
+	}else{
+		console.log("nemožno prodat")
+	}
+}
+
+
 function addMoney(add){
 	money += (add * 1)
 	document.getElementById("money").innerHTML = money + "Kč"
 }
 
+
 function subMoney(sub){
 	money -= sub
 	document.getElementById("money").innerHTML = money + "Kč"
 }
+
 
 function change(mul){
 	let r = Math.round(Math.random() * mul)
